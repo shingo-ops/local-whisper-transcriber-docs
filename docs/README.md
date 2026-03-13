@@ -17,17 +17,17 @@
 
 | ドキュメント | 内容 | 対象者 |
 |------------|------|--------|
-| **[START_HERE.md](./START_HERE.md)** | **まず最初に読むファイル**<br>全体の案内とナビゲーション | すべての人 |
-| **[BEGINNER_GUIDE.md](./BEGINNER_GUIDE.md)** | **ターミナル初心者向け完全ガイド**<br>コマンドの基礎から詳しく説明 | ターミナルが初めての人 |
+| **[📌 最初に読む](docs/START_HERE.md)** | 全体の案内とナビゲーション | すべての人 |
+| **[🔰 初心者向けガイド](docs/BEGINNER_GUIDE.md)** | コマンドの基礎から詳しく説明 | ターミナルが初めての人 |
 
 ### 📖 セットアップと使い方
 
 | ドキュメント | 内容 |
 |------------|------|
-| [QUICKSTART.md](./QUICKSTART.md) | 5分で始めるクイックガイド |
-| [SETUP_STEP_BY_STEP.md](./SETUP_STEP_BY_STEP.md) | 実践的なセットアップ手順（エラー対処法含む） |
-| [HOW_TO_USE.md](./HOW_TO_USE.md) | 詳しい使い方・FAQ・実例 |
-| [USAGE_GUIDE.md](./USAGE_GUIDE.md) | より詳しい使い方とトラブルシューティング |
+| [⚡ クイックスタート](docs/QUICKSTART.md) | 5分で始めるクイックガイド |
+| [🔧 詳細セットアップ](docs/SETUP_STEP_BY_STEP.md) | 実践的なセットアップ手順（エラー対処法含む） |
+| [📖 基本的な使い方](docs/HOW_TO_USE.md) | 詳しい使い方・FAQ・実例 |
+| [📚 詳しい使い方](docs/USAGE_GUIDE.md) | より詳しい使い方とトラブルシューティング |
 
 ---
 

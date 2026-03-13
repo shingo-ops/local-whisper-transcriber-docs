@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>完全ローカル会議文字起こしツール - 使用説明書</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="faster-whisper + Ollama で完全無料の議事録自動生成">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <!-- テーマ -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+
+  <!-- カスタムスタイル -->
+  <style>
+    :root {
+      --theme-color: #2c3e50;
+      --theme-color-secondary: #3498db;
+    }
+
+    .app-name-link img {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+    }
+
+    .markdown-section {
+      max-width: 900px;
+    }
+
+    /* カスタムバッジ */
+    .custom-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      margin: 0 4px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .badge-beginner {
+      background: #27ae60;
+      color: white;
+    }
+
+    .badge-important {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .badge-optional {
+      background: #95a5a6;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">読み込み中...</div>
+
+  <script>
+    window.$docsify = {
+      name: '🎤 完全ローカル会議文字起こしツール',
+      repo: 'https://github.com/shingo-ops/local-whisper-transcriber-docs',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+      homepage: 'README.md',
+
+      // 検索機能
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: '検索...',
+        noData: '結果が見つかりませんでした',
+        depth: 3
+      },
+
+      // コピーコード機能
+      copyCode: {
+        buttonText: 'コピー',
+        errorText: 'エラー',
+        successText: 'コピーしました'
+      },
+
+      // ページネーション
+      pagination: {
+        previousText: '前へ',
+        nextText: '次へ',
+        crossChapter: true,
+        crossChapterText: true,
+      },
+
+      // タブ機能
+      tabs: {
+        persist: true,
+        sync: true,
+        theme: 'classic',
+        tabComments: true,
+        tabHeadings: true
+      },
+
+      // フッター
+      plugins: [
+        function(hook, vm) {
+          hook.beforeEach(function(html) {
+            return html;
+          });
+
+          hook.afterEach(function(html) {
+            return html +
+              '<hr/>' +
+              '<footer>' +
+              '<span>Created by 谷澤真吾 | </span>' +
+              '<span>MIT License | </span>' +
+              '<a href="https://github.com/shingo-ops/sales-ops-with-claude" target="_blank">ツール本体</a>' +
+              '</footer>';
+          });
+        }
+      ]
+    }
+  </script>
+
+  <!-- Docsify本体 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+  <!-- 検索プラグイン -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+
+  <!-- コピーコードプラグイン -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+
+  <!-- ページネーション -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+
+  <!-- タブプラグイン -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+
+  <!-- Emojiプラグイン -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+
+  <!-- 外部リンク -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script>
+
+  <!-- シンタックスハイライト -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
+</body>
+</html>
