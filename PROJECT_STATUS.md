@@ -1,7 +1,88 @@
 # 📝 プロジェクト状況記録
 
-**最終更新**: 2026年3月13日
+**最終更新**: 2026年3月13日 14:55
 **プロジェクト**: 完全ローカル会議文字起こしツール - 使用説明書サイト
+**現在のステータス**: ⚠️ GitHub Pages 404エラー対応中
+
+---
+
+## ⚠️ 現在の問題
+
+### 404エラーが発生中
+- **URL**: https://shingo-ops.github.io/local-whisper-transcriber-docs/
+- **症状**: 「404 - Not found」が表示される
+- **原因**: Docsifyの設定またはGitHub Pagesのビルド問題の可能性
+
+### 実施済みの対処
+1. ✅ Jekyll設定ファイル（_config.yml）を削除
+2. ✅ index.htmlのhomepageパスを`docs/README.md`に修正
+3. ✅ basePath設定を追加
+4. ✅ .nojekyllファイル配置済み
+
+### 次回再開時の対処手順（重要！）
+
+**ステップ1: GitHub Pagesのビルド状況確認**
+```bash
+cd ~/local-whisper-transcriber-docs
+gh api repos/shingo-ops/local-whisper-transcriber-docs/pages
+```
+- `"status": "built"` になっているか確認
+
+**ステップ2: ブラウザキャッシュをクリアしてアクセス**
+```bash
+# 1. ハードリロード（Cmd + Shift + R）でアクセス
+open https://shingo-ops.github.io/local-whisper-transcriber-docs/
+
+# 2. または別のブラウザで開く
+```
+
+**ステップ3: ローカルでDocsifyが動作するか確認**
+```bash
+cd ~/local-whisper-transcriber-docs
+
+# Docsifyのローカルサーバー起動
+npx docsify-cli serve .
+
+# http://localhost:3000 をブラウザで開く
+# → これで動けばDocsify設定は正しい
+```
+
+**ステップ4: それでもダメなら、シンプルな構成に変更**
+
+以下のいずれかの方法で対処:
+
+**方法A: README.mdをルートに配置する方式**
+```bash
+# docs/README.md をルートにコピー
+cp docs/README.md README.md
+
+# index.htmlのhomepage設定を変更
+# homepage: 'README.md' に戻す
+
+git add .
+git commit -m "fix: ルートにREADME.md配置"
+git push origin main
+```
+
+**方法B: GitHub Pagesの設定を再作成**
+```bash
+# GitHub Pages無効化
+gh api repos/shingo-ops/local-whisper-transcriber-docs/pages -X DELETE
+
+# 30秒待機
+sleep 30
+
+# GitHub Pages再有効化
+gh api repos/shingo-ops/local-whisper-transcriber-docs/pages -X POST -f 'source[branch]=main' -f 'source[path]=/'
+```
+
+**方法C: 完全にシンプルなJekyll形式に戻す**
+```bash
+# Docsifyを諦めて、GitHub標準のJekyllに戻す
+# README.mdをルートに配置
+# index.htmlを削除
+# _config.ymlを復元
+```
 
 ---
 
@@ -37,7 +118,6 @@ local-whisper-transcriber-docs/
 ├── _sidebar.md             # サイドバーナビゲーション
 ├── .nojekyll              # GitHub Pages設定（Jekyll無効化）
 ├── .gitignore             # Git除外設定
-├── _config.yml            # 旧Jekyll設定（Docsifyでは不使用）
 ├── PROJECT_STATUS.md      # このファイル（作業記録）
 │
 ├── docs/                   # 全ドキュメント
@@ -53,6 +133,12 @@ local-whisper-transcriber-docs/
 │
 └── assets/
     └── images/            # 画像用ディレクトリ（将来の拡張用）
+
+※ 最新のGitコミット:
+  - commit 80e74a3: Docsify homepage パスを修正
+  - commit 7ec2450: Jekyll設定ファイルを削除
+  - commit 81feb75: プロジェクト状況記録ファイルを追加
+  - commit b3418aa: Docsifyドキュメントサイトに変換
 ```
 
 ---
@@ -98,15 +184,17 @@ local-whisper-transcriber-docs/
 
 ---
 
-## 🔄 次回再開時の確認事項
+## 🔄 次回再開時の作業（404問題解決後）
 
-### 1. サイトの確認
+### サイトが正常に表示されている場合
+
+**1. サイトの確認**
 ```bash
 # ブラウザでサイトが正しく表示されているか確認
 open https://shingo-ops.github.io/local-whisper-transcriber-docs/
 ```
 
-### 2. ローカルプレビュー（開発時）
+**2. ローカルプレビュー（開発時）**
 ```bash
 # Docsifyのローカルサーバーを起動
 cd ~/local-whisper-transcriber-docs
@@ -120,7 +208,7 @@ python3 -m http.server 3000
 # ブラウザで http://localhost:3000 を開く
 ```
 
-### 3. ドキュメント更新時の手順
+**3. ドキュメント更新時の手順**
 ```bash
 cd ~/local-whisper-transcriber-docs
 
